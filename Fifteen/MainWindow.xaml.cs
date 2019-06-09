@@ -20,12 +20,12 @@ namespace Fifteen
     /// </summary>
     public partial class MainWindow : Window
     {
-        Game game;
+        Game game = new Game();
 
         public MainWindow()
         {
             InitializeComponent();
-            game = new Game(4);
+            game.game(4);
         }
 
         private void ButtonClick(object sender, RoutedEventArgs e)
@@ -115,6 +115,9 @@ namespace Fifteen
             StartGame();
         }
 
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
     }
 }

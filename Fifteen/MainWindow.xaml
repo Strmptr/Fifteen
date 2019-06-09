@@ -26,7 +26,7 @@
             <Button x:Name="button15" Content="0" Margin="5" FontSize="20" FontWeight="Bold" Click="ButtonClick" Tag="15"/>
         </UniformGrid>
         <Menu x:Name="menu" Height="20" VerticalAlignment="Top" Margin="0" Background="White">
-            <MenuItem Header="Меню">
+            <MenuItem Header="Меню" Click="MenuItem_Click">
                 <MenuItem Header="Начать игру" Click="StartGameClick"/>
             </MenuItem>
         </Menu>

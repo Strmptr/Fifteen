@@ -8,18 +8,18 @@ namespace Fifteen
 {
     class Game
     {
-        int size;//размер
-        int[,] map;//карта
-        int spaceX, spaceY;//пустая ячейка
+        public int size;//размер
+        public int[,] map;//карта
+        public int spaceX, spaceY;//пустая ячейка
         static Random rand = new Random();
 
 
-        public Game (int size)
+        public void game(int size)
         {
-            if (size < 2) size = 2;
-            if (size > 5) size = 5;
-            this.size = size;
-            map = new int[size, size];
+                if (size < 2) size = 2;
+                if (size > 5) size = 5;
+                this.size = size;
+                map = new int[size, size];
         }
 
         public void Start()
@@ -47,7 +47,7 @@ namespace Fifteen
             return map[x, y];
         }
 
-        private int CoordsToPosition (int x, int y)
+        public int CoordsToPosition (int x, int y)
         {
             if (x < 0)
                 x = 0;
@@ -60,7 +60,7 @@ namespace Fifteen
             return y * size + x;
         }
 
-        private void PositionToCoords (int button, out int x, out int y)
+        public void PositionToCoords (int button, out int x, out int y)
         {
             if (button < 0)
                 button = 0;
@@ -84,7 +84,7 @@ namespace Fifteen
 
         public void Shuffle()//перемешать
         {
-            //Shift(rand.Next(0, size * size));
+            Shift(rand.Next(0, size * size));
             int r = rand.Next(0, 4);
             int x = spaceX;
             int y = spaceY;
