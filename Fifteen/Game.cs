@@ -100,6 +100,7 @@ namespace Fifteen
 
         public bool isEndGame()
         {
+            
             if (!(spaceX == size - 1 && spaceY == size - 1))
                 return false;
             for (int x = 0; x < size; x++)

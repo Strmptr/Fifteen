@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Fifteen"
         mc:Ignorable="d"
-        Title="Пятнашки" Height="590" Width="564" WindowStartupLocation="CenterScreen" Loaded="Main_Loaded">
+        Title="Пятнашки" Height="590" Width="564" WindowStartupLocation="CenterScreen" Loaded="Main_Loaded" KeyDown="Main_KeyDown">
     <Grid>
         <UniformGrid x:Name="grid" Margin="10,20,10,10" Rows="4" Columns="4">
             <Button x:Name="button0" Content="1" Margin="5" FontSize="20" FontWeight="Bold" Click="ButtonClick" Tag="0"/>

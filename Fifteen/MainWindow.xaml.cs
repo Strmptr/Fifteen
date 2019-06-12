@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.SQLite;
 
 namespace Fifteen
 {
@@ -21,13 +23,13 @@ namespace Fifteen
     public partial class MainWindow : Window
     {
         Game game = new Game();
-
+        int sec = 0;
         public MainWindow()
         {
             InitializeComponent();
             game.game(4);
         }
-
+        System.Windows.Threading.DispatcherTimer Timer;
         private void ButtonClick(object sender, RoutedEventArgs e)
         {
             int button = Convert.ToInt32(((Button)sender).Tag);
@@ -36,8 +38,28 @@ namespace Fifteen
             if (game.isEndGame())
             {
                 MessageBox.Show("Вы победили!", "Победа");
-                if ((MessageBox.Show("Начать игру заново?", "", MessageBoxButton.YesNo) == MessageBoxResult.Yes))
-                    StartGame();
+                if ((MessageBox.Show((sec.ToString() + " секунд. Записать время?"), "", MessageBoxButton.YesNo) == MessageBoxResult.Yes))
+                {
+                    Timer.Stop();
+                    Window1 w1 = new Window1(sec);
+                    w1.Owner = this;
+                    if (w1.ShowDialog() == true)
+
+                    {
+
+                        if ((MessageBox.Show("Начать игру заново?", "", MessageBoxButton.YesNo) == MessageBoxResult.Yes))
+                        {
+                            Timer.Start();
+                            sec = 0;
+                            StartGame();
+                        }
+                            
+                        else
+                        {
+                            BlockButtons();
+                        }
+                    }
+                }
                 else
                 {
                     BlockButtons();
@@ -61,7 +83,7 @@ namespace Fifteen
             }
         }
 
-        private Button _Button (int button)
+        private Button _Button(int button)
         {
             switch (button)
             {
@@ -88,6 +110,8 @@ namespace Fifteen
         private void StartGameClick(object sender, RoutedEventArgs e)
         {
             StartGame();
+
+
         }
 
         private void Refresh()
@@ -101,6 +125,10 @@ namespace Fifteen
 
         private void StartGame()
         {
+            Timer = new System.Windows.Threading.DispatcherTimer();
+            Timer.Tick += new EventHandler(dispatcherTimer_Tick);
+            Timer.Interval = new TimeSpan(0, 0, 1);
+            Timer.Start();
             UnblockButtons();
             game.Start();
             for (int i = 0; i < 100; i++)
@@ -108,6 +136,11 @@ namespace Fifteen
                 game.Shuffle();
             }
             Refresh();
+        }
+
+        private void dispatcherTimer_Tick(object sender, EventArgs e)
+        {
+            sec++;
         }
 
         private void Main_Loaded(object sender, RoutedEventArgs e)
@@ -118,6 +151,44 @@ namespace Fifteen
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+
+
+        // тестовая часть потом удалить 
+        private void Main_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            if (e.Key == Key.I) 
+            {
+                MessageBox.Show("Вы победили!", "Победа");
+                if ((MessageBox.Show((sec.ToString() + " секунд. Записать время?"), "", MessageBoxButton.YesNo) == MessageBoxResult.Yes))
+                {
+                    Timer.Stop();
+                    Window1 w1 = new Window1(sec);
+                    w1.Owner = this;
+                    if (w1.ShowDialog() == true)
+
+                    {
+
+                        if ((MessageBox.Show("Начать игру заново?", "", MessageBoxButton.YesNo) == MessageBoxResult.Yes))
+                        {
+                            Timer.Start();
+                            sec = 0;
+                            StartGame();
+                        }
+
+                        else
+                        {
+                            BlockButtons();
+                        }
+                    }
+                }
+                else
+                {
+                    BlockButtons();
+                }
+            }
         }
     }
 }
