@@ -10,7 +10,7 @@ namespace Fifteen
 {
     class SQlite
     {
-        string db_name = @"C:\Users\HP\Desktop\Fifteen-master\scores.db";
+        string db_name = @"C:\Users\HP\Desktop\Пятнашки C#. 08.06.19\Исходный код\Fifteen\scores.db";
 
         public class data
         {
@@ -44,7 +44,7 @@ namespace Fifteen
             return (info);
         }
         bool make_add = true;
-        public void input(int time, string name)
+        public bool input(int time, string name)
         {
 
            
@@ -67,8 +67,11 @@ namespace Fifteen
                             make_add = false;
                             break;
                         }
+                        
+
                         // иначе оставляем результат из таблицы
                     }
+                    else make_add = false;
                 }
 
             }
@@ -83,6 +86,7 @@ namespace Fifteen
                 }
             
             m_dbConnection.Close();
+            return (true);
         }
     }
 }

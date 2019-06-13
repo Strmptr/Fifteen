@@ -42,7 +42,7 @@ namespace Fifteen
             PositionToCoords(button, out x, out y);
             if (x < 0 || x >= size)
                 return 0;
-            if (y< 0 || y >= size)
+            if (y < 0 || y >= size)
                 return 0;
             return map[x, y];
         }

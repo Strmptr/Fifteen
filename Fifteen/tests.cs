@@ -47,5 +47,27 @@ namespace Fifteen
             Assert.AreEqual(8, game.CoordsToPosition(2, 2));
 
         }
+        [TestCase]
+        public void isEndGame()
+        {
+            Game game = new Game();
+            game.game(3);
+            bool status = game.isEndGame();
+            Assert.IsFalse(status);
+        }
+        [TestCase]
+        public void output()
+        {
+            SQlite sqlite = new SQlite();
+           var a = sqlite.output();
+            Assert.AreEqual(a, sqlite.output());
+        }
+
+        [TestCase]
+        public void input()
+        {
+            SQlite sqlite = new SQlite();
+            Assert.AreEqual(true, sqlite.input(1,"qqqqqqqq"));
+        }
     }
 }

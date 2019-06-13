@@ -15,6 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.SQLite;
 
+
 namespace Fifteen
 {
     /// <summary>
@@ -22,6 +23,7 @@ namespace Fifteen
     /// </summary>
     public partial class MainWindow : Window
     {
+        
         Game game = new Game();
         int sec = 0;
         public MainWindow()
@@ -32,12 +34,16 @@ namespace Fifteen
         System.Windows.Threading.DispatcherTimer Timer;
         private void ButtonClick(object sender, RoutedEventArgs e)
         {
+            
             int button = Convert.ToInt32(((Button)sender).Tag);
             game.Shift(button);
             Refresh();
             if (game.isEndGame())
+               
             {
+               
                 MessageBox.Show("Вы победили!", "Победа");
+                
                 if ((MessageBox.Show((sec.ToString() + " секунд. Записать время?"), "", MessageBoxButton.YesNo) == MessageBoxResult.Yes))
                 {
                     Timer.Stop();

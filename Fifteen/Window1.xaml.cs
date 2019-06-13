@@ -43,5 +43,17 @@ namespace Fifteen
         {
             this.DialogResult = true;
         }
+
+        private void name_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (name.Text ==""|| name.Text=="Имя")
+            {
+                add.IsEnabled = false;
+            }
+            else
+            {
+                add.IsEnabled = true;
+            }
+        }
     }
 }
