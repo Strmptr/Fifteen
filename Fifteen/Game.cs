@@ -72,6 +72,7 @@ namespace Fifteen
 
         public void Shift(int button)//перемещение кнопки
         {
+            
             int x, y;
             PositionToCoords(button, out x, out y);
             if (Math.Abs(spaceX - x) + Math.Abs(spaceY - y) != 1)//условие перемещения кнопки

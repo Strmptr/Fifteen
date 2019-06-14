@@ -8,9 +8,9 @@
         Title="Пятнашки" Height="590" Width="564" MinHeight="300" MinWidth="300" WindowStartupLocation="CenterScreen" Loaded="Main_Loaded" KeyDown="Main_KeyDown">
     <Grid>
         <UniformGrid x:Name="grid" Margin="10,20,10,10" Rows="4" Columns="4">
-            <Button x:Name="button0" Content="1" Margin="5" FontSize="20" FontWeight="Bold" Click="ButtonClick" Tag="0"/>
+            <Button x:Name="button0" Content="1" Margin="5" FontSize="20" FontWeight="Bold" Click="ButtonClick" Tag="0" Style="{DynamicResource MyButtonStyle1}"/>
             <Button x:Name="button1" Content="2" Margin="5" FontSize="20" FontWeight="Bold" Click="ButtonClick" Tag="1"/>
-            <Button x:Name="button2" Content="3" Margin="5" FontSize="20" FontWeight="Bold" Click="ButtonClick" Tag="2"/>
+            <Button x:Name="button2" Content="3" Margin="5" FontSize="20" FontWeight="Bold" Click="ButtonClick" Tag="2" Style="{DynamicResource MyButtonStyle1}"/>
             <Button x:Name="button3" Content="4" Margin="5" FontSize="20" FontWeight="Bold" Click="ButtonClick" Tag="3"/>
             <Button x:Name="button4" Content="5" Margin="5" FontSize="20" FontWeight="Bold" Click="ButtonClick" Tag="4"/>
             <Button x:Name="button5" Content="6" Margin="5" FontSize="20" FontWeight="Bold" Click="ButtonClick" Tag="5"/>
@@ -28,6 +28,7 @@
         <Menu x:Name="menu" Height="20" VerticalAlignment="Top" Margin="0" Background="White">
             <MenuItem Header="Меню" Click="MenuItem_Click">
                 <MenuItem Header="Начать игру" Click="StartGameClick"/>
+                <MenuItem Header="Загрузить изображение" Click="LoadingImage"/>
             </MenuItem>
         </Menu>
 

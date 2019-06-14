@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.SQLite;
-
+using Microsoft.Win32;
 
 namespace Fifteen
 {
@@ -25,6 +25,11 @@ namespace Fifteen
     public partial class MainWindow : Window
     {
         
+        
+
+        
+        //BitmapImage img;
+
         Game game = new Game();
         int sec = 0;
         public MainWindow()
@@ -39,14 +44,36 @@ namespace Fifteen
 
             private void ButtonClick(object sender, RoutedEventArgs e)
         {
-            
+            int W = imag.PixelWidth / 4;
+            int H = imag.PixelHeight / 4;
             int button = Convert.ToInt32(((Button)sender).Tag);
             game.Shift(button);
             Refresh();
+           
+            setbg(button0, W, H, 0);
+            setbg(button1, W, H, 1);
+            setbg(button2, W, H, 2);
+            setbg(button3, W, H, 3);
+            setbg(button4, W, H, 4);
+            setbg(button5, W, H, 5);
+            setbg(button6, W, H, 6);
+            setbg(button7, W, H, 7);
+            setbg(button8, W, H, 8);
+            setbg(button9, W, H, 9);
+            setbg(button10, W, H, 10);
+            setbg(button11, W, H, 11);
+            setbg(button12, W, H, 12);
+            setbg(button13, W, H, 13);
+            setbg(button14, W, H, 14);
+            setbg(button15, W, H, 15);
+
+
+
             if (game.isEndGame())
                
             {
                
+
                 MessageBox.Show("Вы победили!", "Победа");
                 
                 if ((MessageBox.Show((sec.ToString() + " секунд. Записать время?"), "", MessageBoxButton.YesNo) == MessageBoxResult.Yes))
@@ -76,6 +103,7 @@ namespace Fifteen
                     BlockButtons();
                 }
             }
+           
         }
 
         private void BlockButtons()
@@ -201,6 +229,90 @@ namespace Fifteen
                     BlockButtons();
                 }
             }
+        }
+
+        BitmapImage imag;
+
+
+
+        private void setbg(Button btn, int W, int H, int n)
+        {
+            ImageBrush ib = new ImageBrush();
+            
+            //изображение будет выведено без растяжения/сжатия
+            ib.AlignmentX = AlignmentX.Left;
+            ib.AlignmentY = AlignmentY.Top;
+            ib.Stretch = Stretch.None;
+
+            //участок изображения который будет нарисован
+            //в данном случае, второй кадр первой строки
+            int num = int.Parse(btn.Content.ToString());
+
+            double px = (num % 4) * W;
+            double py = (num / 4) * H;
+
+            ib.Viewbox = new Rect(px, py, px+W, py+H);
+            ib.ViewboxUnits = BrushMappingMode.Absolute;
+            ib.ImageSource = imag;
+
+            btn.Background = ib;
+        }
+
+        private void LoadingImage(object sender, RoutedEventArgs e)
+        {
+
+                OpenFileDialog dl = new OpenFileDialog();
+                dl.ShowDialog();
+                //imag = new BitmapImage(new Uri(@"pack://application:,,,/Resourse/grid.png", UriKind.Absolute));
+
+                imag = new BitmapImage(new Uri(dl.FileName, UriKind.Absolute));
+
+            int W = imag.PixelWidth / 4;
+            int H = imag.PixelHeight / 4;
+
+
+
+            //setbg(button0, W, H, 0);
+            //setbg(button1, W, H, 1);
+            //setbg(button2, W, H, 2);
+            //setbg(button3, W, H, 3);
+            //setbg(button4, W, H, 4);
+            //setbg(button5, W, H, 5);
+            //setbg(button6, W, H, 6);
+            //setbg(button7, W, H, 7);
+            //setbg(button8, W, H, 8);
+            //setbg(button9, W, H, 9);
+            //setbg(button10, W, H, 10);
+            //setbg(button11, W, H, 11);
+            //setbg(button12, W, H, 12);
+            //setbg(button13, W, H, 13);
+            //setbg(button14, W, H, 14);
+            //setbg(button15, W, H, 15);
+            //for (int i = 0; i < 4; i++)
+            //    {
+            //        for(int j =0; j<4; j++)
+            //        {
+            //            ImageBrush img = new ImageBrush();
+            //            img.ImageSource = imag;
+
+                //            StackPanel r = new StackPanel();
+                //            r.Background = img;
+
+                //            int W = (int)(imag.PixelWidth / 122);
+                //            int H = (int)(imag.PixelHeight / 124);
+                //            switch(i*j)
+                //            {
+                //                case 0:
+                //                    {
+                //                        button0.Content = r;
+                //                        break;
+                //                    }
+
+
+                //            }
+
+                //    }
+                //}
         }
     }
 }
