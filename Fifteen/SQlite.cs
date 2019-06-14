@@ -10,7 +10,7 @@ namespace Fifteen
 {
     class SQlite
     {
-        string db_name = @"C:\Users\HP\Desktop\Пятнашки C#. 08.06.19\Исходный код\Fifteen\scores.db";
+        string db_name = @"scores.db";
 
         public class data
         {
