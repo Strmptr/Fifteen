@@ -67,7 +67,7 @@ namespace Fifteen
         public void input()
         {
             SQlite sqlite = new SQlite();
-            Assert.AreEqual(true, sqlite.input(1,"qqqqqqqq"));
+            Assert.AreEqual(true, sqlite.input(1,"232133123"));
         }
     }
 }

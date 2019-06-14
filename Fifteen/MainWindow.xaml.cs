@@ -18,6 +18,7 @@ using System.Data.SQLite;
 
 namespace Fifteen
 {
+
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
@@ -32,7 +33,11 @@ namespace Fifteen
             game.game(4);
         }
         System.Windows.Threading.DispatcherTimer Timer;
-        private void ButtonClick(object sender, RoutedEventArgs e)
+
+        
+
+
+            private void ButtonClick(object sender, RoutedEventArgs e)
         {
             
             int button = Convert.ToInt32(((Button)sender).Tag);
@@ -158,6 +163,7 @@ namespace Fifteen
         {
 
         }
+      
 
 
 
