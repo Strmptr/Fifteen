@@ -28,13 +28,19 @@ namespace Fifteen
         
 
         
-        //BitmapImage img;
+        
 
         Game game = new Game();
         int sec = 0;
+
+        bool flag = false;
+
         public MainWindow()
         {
             InitializeComponent();
+            //button0.Background = Brushes.LightGray;
+            //button1.Background = Brushes.LightGray;
+            //button2.Background = Brushes.LightGray;
             game.game(4);
         }
         System.Windows.Threading.DispatcherTimer Timer;
@@ -44,30 +50,38 @@ namespace Fifteen
 
             private void ButtonClick(object sender, RoutedEventArgs e)
         {
-            int W = imag.PixelWidth / 4;
-            int H = imag.PixelHeight / 4;
             int button = Convert.ToInt32(((Button)sender).Tag);
             game.Shift(button);
             Refresh();
+            if (flag == true)
+            {
+                //int W = imag.PixelWidth / 4;
+                //int H = imag.PixelHeight / 4;
+                //int button = Convert.ToInt32(((Button)sender).Tag);
+
+                int W = imag.PixelWidth / 4;
+                int H = imag.PixelHeight / 4;
+
+
+                setbg(button0, W, H, 0);
+                setbg(button1, W, H, 1);
+                setbg(button2, W, H, 2);
+                setbg(button3, W, H, 3);
+                setbg(button4, W, H, 4);
+                setbg(button5, W, H, 5);
+                setbg(button6, W, H, 6);
+                setbg(button7, W, H, 7);
+                setbg(button8, W, H, 8);
+                setbg(button9, W, H, 9);
+                setbg(button10, W, H, 10);
+                setbg(button11, W, H, 11);
+                setbg(button12, W, H, 12);
+                setbg(button13, W, H, 13);
+                setbg(button14, W, H, 14);
+                setbg(button15, W, H, 15);
+                
+            }
            
-            setbg(button0, W, H, 0);
-            setbg(button1, W, H, 1);
-            setbg(button2, W, H, 2);
-            setbg(button3, W, H, 3);
-            setbg(button4, W, H, 4);
-            setbg(button5, W, H, 5);
-            setbg(button6, W, H, 6);
-            setbg(button7, W, H, 7);
-            setbg(button8, W, H, 8);
-            setbg(button9, W, H, 9);
-            setbg(button10, W, H, 10);
-            setbg(button11, W, H, 11);
-            setbg(button12, W, H, 12);
-            setbg(button13, W, H, 13);
-            setbg(button14, W, H, 14);
-            setbg(button15, W, H, 15);
-
-
 
             if (game.isEndGame())
                
@@ -102,8 +116,10 @@ namespace Fifteen
                 {
                     BlockButtons();
                 }
+                
             }
            
+
         }
 
         private void BlockButtons()
@@ -149,6 +165,26 @@ namespace Fifteen
         private void StartGameClick(object sender, RoutedEventArgs e)
         {
             StartGame();
+           
+            flag = false;
+
+            button0.Background = Brushes.LightGray;
+            button1.Background = Brushes.LightGray;
+            button2.Background = Brushes.LightGray;
+            button3.Background = Brushes.LightGray;
+            button4.Background = Brushes.LightGray;
+            button5.Background = Brushes.LightGray;
+            button6.Background = Brushes.LightGray;
+            button7.Background = Brushes.LightGray;
+            button8.Background = Brushes.LightGray;
+            button9.Background = Brushes.LightGray;
+            button10.Background = Brushes.LightGray;
+            button11.Background = Brushes.LightGray;
+            button12.Background = Brushes.LightGray;
+            button13.Background = Brushes.LightGray;
+            button14.Background = Brushes.LightGray;
+            button15.Background = Brushes.LightGray;
+            
 
 
         }
@@ -256,6 +292,8 @@ namespace Fifteen
             ib.ImageSource = imag;
 
             btn.Background = ib;
+
+           
         }
 
         private void LoadingImage(object sender, RoutedEventArgs e)
@@ -263,56 +301,42 @@ namespace Fifteen
 
                 OpenFileDialog dl = new OpenFileDialog();
                 dl.ShowDialog();
-                //imag = new BitmapImage(new Uri(@"pack://application:,,,/Resourse/grid.png", UriKind.Absolute));
+                
+
 
                 imag = new BitmapImage(new Uri(dl.FileName, UriKind.Absolute));
+
+            flag = true;
 
             int W = imag.PixelWidth / 4;
             int H = imag.PixelHeight / 4;
 
+            setbg(button0, W, H, 0);
+            setbg(button1, W, H, 1);
+            setbg(button2, W, H, 2);
+            setbg(button3, W, H, 3);
+            setbg(button4, W, H, 4);
+            setbg(button5, W, H, 5);
+            setbg(button6, W, H, 6);
+            setbg(button7, W, H, 7);
+            setbg(button8, W, H, 8);
+            setbg(button9, W, H, 9);
+            setbg(button10, W, H, 10);
+            setbg(button11, W, H, 11);
+            setbg(button12, W, H, 12);
+            setbg(button13, W, H, 13);
+            setbg(button14, W, H, 14);
+            setbg(button15, W, H, 15);
 
 
-            //setbg(button0, W, H, 0);
-            //setbg(button1, W, H, 1);
-            //setbg(button2, W, H, 2);
-            //setbg(button3, W, H, 3);
-            //setbg(button4, W, H, 4);
-            //setbg(button5, W, H, 5);
-            //setbg(button6, W, H, 6);
-            //setbg(button7, W, H, 7);
-            //setbg(button8, W, H, 8);
-            //setbg(button9, W, H, 9);
-            //setbg(button10, W, H, 10);
-            //setbg(button11, W, H, 11);
-            //setbg(button12, W, H, 12);
-            //setbg(button13, W, H, 13);
-            //setbg(button14, W, H, 14);
-            //setbg(button15, W, H, 15);
-            //for (int i = 0; i < 4; i++)
-            //    {
-            //        for(int j =0; j<4; j++)
-            //        {
-            //            ImageBrush img = new ImageBrush();
-            //            img.ImageSource = imag;
 
-                //            StackPanel r = new StackPanel();
-                //            r.Background = img;
+        }
 
-                //            int W = (int)(imag.PixelWidth / 122);
-                //            int H = (int)(imag.PixelHeight / 124);
-                //            switch(i*j)
-                //            {
-                //                case 0:
-                //                    {
-                //                        button0.Content = r;
-                //                        break;
-                //                    }
-
-
-                //            }
-
-                //    }
-                //}
+        private void LoadingTabl(object sender, RoutedEventArgs e)
+        {
+            Window1 w1 = new Window1(sec);
+            w1.Owner = this;
+            if (w1.ShowDialog() == true) ;
         }
     }
 }

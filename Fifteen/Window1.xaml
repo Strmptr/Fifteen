@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Fifteen"
         mc:Ignorable="d"
-        Title="Таблица" Height="329.808" Width="192.14" Closing="Window_Closing">
+        Title="Таблица" Height="329.808" Width="192.14" MinHeight="329.808" MaxHeight="329.808" MinWidth="192.14" MaxWidth="192.14" Closing="Window_Closing">
     <Grid>
         <Button x:Name="add" Content="add" HorizontalAlignment="Left" Margin="100,10,0,0" VerticalAlignment="Top" Width="43" Click="Add_Click"/>
         <TextBox x:Name="name" HorizontalAlignment="Left" Height="20" Margin="10,10,0,0" TextWrapping="Wrap" Text="Имя" VerticalAlignment="Top" Width="85" TextChanged="name_TextChanged"/>
